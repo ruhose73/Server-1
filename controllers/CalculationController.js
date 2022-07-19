@@ -5,11 +5,14 @@ const PostloadService = require("../services/postloadService");
 const PreloadService = require("../services/preloadService");
 const ContractilityService = require("../services/ContractilityService");
 
-
 class CalculationController {
 
     async CalcAll(req,res,next) {
-
+        const  {userId, height, weight, ppt, sv, chss, dzla, adsr,lasr,cvd,kdo} = req.body
+        const outputCalc = await OutputService.OutputCalc(userId, sv, chss, ppt)
+        const postloadCalc = await PostloadService.PostloadCalc(userId, ppt, sv, cvd, adsr, lasr, dzla )
+        const preloadCalc = await PreloadService.PreloadCalc( userId, cvd, dzla, kdo)
+        return res.json(outputCalc,postloadCalc,preloadCalc);
     }
 
     async OutputCalc(req, res, next) {
@@ -41,12 +44,13 @@ class CalculationController {
             if(!errors.isEmpty()) {
                 return next(ApiStatus.badRequest("Неверные значения"));
             }
-            const  {userId, PPT, SV , CV, CVD, SrAD, LAsr, DZLA} = req.body
+            const  {userId, PPT, SV, CVD, SrAD, LAsr, DZLA} = req.body
 
-            console.log(userId, PPT, SV , CV, CVD, SrAD, LAsr, DZLA)
+            console.log(userId, PPT, SV , CVD, SrAD, LAsr, DZLA)
             
             
-            const postloadCalc = await PostloadService.PostloadCalc(userId, PPT, SV , CV, CVD, SrAD, LAsr, DZLA )
+            const postloadCalc = await PostloadService.PostloadCalc(userId, PPT, SV, CVD, SrAD, LAsr, DZLA )
+            
             return res.json(postloadCalc);
         } catch (e) {
             next(e);
@@ -62,12 +66,12 @@ class CalculationController {
             if(!errors.isEmpty()) {
                 return next(ApiStatus.badRequest("Неверные значения"));
             }
-            const  {userId, CVD, DZLA, KDO, IKDO} = req.body
+            const  {userId, CVD, DZLA, KDO} = req.body
 
-            console.log(userId, CVD, DZLA, KDO, IKDO)
+            console.log(userId, CVD, DZLA, KDO)
             
             
-            const preloadCalc = await PreloadService.PreloadCalc( userId, CVD, DZLA, KDO, IKDO)
+            const preloadCalc = await PreloadService.PreloadCalc( userId, CVD, DZLA, KDO)
             return res.json(preloadCalc);
         } catch (e) {
             next(e);

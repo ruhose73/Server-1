@@ -4,12 +4,12 @@ const Preload = require("../models/Preload")
 
 class PreloadServiceServiceService {
 
-    async PreloadCalc(userId, CVD, DZLA, KDO, IKDO) {
+    async PreloadCalc(userId, CVD, DZLA, KDO) {
         try {
             const candidate = await User.findByPk(userId)
             if(!candidate.PreloadId) {
             const savePreload = await Preload.create({
-                CVD, DZLA, KDO, IKDO 
+                CVD, DZLA, KDO
             })
             candidate.PreloadId = savePreload.dataValues.id
             await candidate.save();

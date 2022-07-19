@@ -4,10 +4,10 @@ const User = require("./User")
 
 const Preload = sequelize.define("Preload", {
     id: {type:DataTypes.INTEGER, required:true, primaryKey:true, autoIncrement:true},
-    CVD: {type:DataTypes.REAL, required:true},
-    DZLA: {type:DataTypes.REAL, required:true},
-    KDO: {type:DataTypes.REAL, required:true},
-    IKDO: {type:DataTypes.REAL, required:true},   
+    CVD: {type:DataTypes.REAL},
+    DZLA: {type:DataTypes.REAL},
+    KDO: {type:DataTypes.REAL},
+    IKDO: {type:DataTypes.REAL},   
 })
 
 Preload.hasMany(User);

@@ -4,12 +4,12 @@ const User = require("./User")
 
 const Postload = sequelize.define("Postload", {
     id: {type:DataTypes.INTEGER, required:true, primaryKey:true, autoIncrement:true},
-    SSS: {type:DataTypes.REAL, required:true},
-    ISSS: {type:DataTypes.REAL, required:true},
-    LSS: {type:DataTypes.REAL, required:true},
-    ILSS: {type:DataTypes.REAL, required:true},  
-    SrAD: {type:DataTypes.REAL, required:true},   
-    LAsr: {type:DataTypes.REAL, required:true},    
+    SSS: {type:DataTypes.REAL},
+    ISSS: {type:DataTypes.REAL},
+    LSS: {type:DataTypes.REAL},
+    ILSS: {type:DataTypes.REAL},  
+    SrAD: {type:DataTypes.REAL},   
+    LAsr: {type:DataTypes.REAL},    
 })
 
 Postload.hasMany(User);

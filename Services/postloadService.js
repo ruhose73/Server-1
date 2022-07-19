@@ -4,11 +4,11 @@ const Postload = require("../models/Postload")
 
 class PostloadServiceService {
 
-    async PostloadCalc(userId, PPT, SV , CV, CVD, SrAD, LAsr, DZLA) {
+    async PostloadCalc(userId, PPT, SV , CVD, SrAD, LAsr, DZLA) {
         try {
             const candidate = await User.findByPk(userId)
             if(!candidate.PostloadId) {
-                const SSS = ((SrAD - CVD)/CV);
+                const SSS = ((SrAD - CVD)/SV);
                 const ISSS = (SSS*PPT);
                 const LSS = ((SrAD-DZLA)/SV);
                 const ILSS = (LSS*PPT);

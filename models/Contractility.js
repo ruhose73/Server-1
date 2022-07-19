@@ -4,17 +4,17 @@ const User = require("./User")
 
 const Contractility = sequelize.define("Contractility", {
     id: {type:DataTypes.INTEGER, required:true, primaryKey:true, autoIncrement:true},
-    URLZH: {type:DataTypes.REAL, required:true},
-    IYRLZH: {type:DataTypes.REAL, required:true},
-    RLK: {type:DataTypes.REAL, required:true},
-    IRLK: {type:DataTypes.REAL, required:true},   
-    URPZH: {type:DataTypes.REAL, required:true},
-    IURPZH: {type:DataTypes.REAL, required:true},
-    RPK: {type:DataTypes.REAL, required:true},
-    IRPK: {type:DataTypes.REAL, required:true},
-    FV: {type:DataTypes.REAL, required:true},
-    KSO: {type:DataTypes.REAL, required:true},
-    IKSO: {type:DataTypes.REAL, required:true}
+    URLZH: {type:DataTypes.REAL},
+    IYRLZH: {type:DataTypes.REAL},
+    RLK: {type:DataTypes.REAL},
+    IRLK: {type:DataTypes.REAL},   
+    URPZH: {type:DataTypes.REAL},
+    IURPZH: {type:DataTypes.REAL},
+    RPK: {type:DataTypes.REAL},
+    IRPK: {type:DataTypes.REAL},
+    FV: {type:DataTypes.REAL},
+    KSO: {type:DataTypes.REAL},
+    IKSO: {type:DataTypes.REAL}
 })
 
 Contractility.hasMany(User);
